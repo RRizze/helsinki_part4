@@ -1,0 +1,23 @@
+services:
+  blogs-mongo:
+    image: mongo
+    container_name: blogs-mongo
+    ports:
+      - 127.0.0.1:27017:27017
+    volumes:
+      - blogs-mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: secret
+
+  test-blogs-mongo:
+    image: mongo
+    container_name: test-blogs-mongo
+    ports:
+      - 127.0.0.1:4000:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: secret
+
+volumes:
+  blogs-mongo-data:
